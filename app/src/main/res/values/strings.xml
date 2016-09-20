@@ -1,0 +1,56 @@
+<resources>
+
+  <string name="app_name" translatable="true">Stock Hawk</string>
+  <string name="action_settings" translatable="true">Settings</string>
+  <string name="action_change_units" translatable="true">Change Units</string>
+  <string name="symbol_search" translatable="true">Symbol Search</string>
+  <string name="content_test" translatable="true">Search for a Stock Symbol</string>
+  <string name="input_hint" translatable="true">FB</string>
+  <string name="input_prefill" translatable="true"></string>
+  <string name="network_toast" translatable="true">Uh-oh! This app requires an internet connection.Unable to load updated stocks</string>
+  <string name="stock_symbol_string" translatable="true">GOOG</string>
+  <string name="stock_already_saved" translatable="true">This stock is already saved!</string>
+
+  <!-- Content descriptions -->
+
+  <string name="add_desc" translatable="true">Add a stock to watchlist</string>
+  <string name="watchlist" translatable="true">Go to watchlist of your stocks</string>
+  <string name="stock_price" translatable="true">Price of stock</string>
+  <string name="percent_change" translatable="true">Change in price of stock</string>
+  <string name="past_performance" translatable="true">Graph showing past performance of stock</string>
+  <string name="portfolio" translatable="true">Open in App</string>
+  <string name="Welcome" translatable="true">Welcome to Stock Hawk</string>
+  <string name="current_settings">This button will display settings</string>
+  <string name="value_in_dollars">This Button will display percentage change of value in dollars</string>
+  <string name="Settings_Button">This is Settings Button</string>
+
+  <!-- Used in HistoryActivity's Stock details textView -->
+
+  <string name="history_activity_name" translatable="true">Performance History</string>
+  <string name="name" translatable="true">Name : </string>
+  <string name="symbol" translatable="true">Stock Ticker : </string>
+  <string name="exchange" translatable="true">Stock Exchange : </string>
+  <string name="currency" translatable="true">Currency : </string>
+  <string name="ask" translatable="true">Ask Price : </string>
+  <string name="bid" translatable="true">Bid Price : </string>
+  <string name="days_range" translatable="true">Days Price Range : </string>
+  <string name="change" translatable="true">Change : </string>
+  <string name="last_trade_date" translatable="true">Last Trade Date : </string>
+  <string name="year_high" translatable="true">Year High : </string>
+  <string name="year_low" translatable="true">Year Low : </string>
+  <string name="market_capitalization" translatable="true">Market Capitalization : </string>
+  <string name="dollar" translatable="true">$</string>
+
+
+  <!-- Used in HistoryActivity stock performance graph -->
+
+  <string name="graph_label" translatable="true">Price over past 30 days</string>
+  <string name="days30" translatable="true"> 30 days ago </string>
+  <string name="days15" translatable="true"> 15 days ago </string>
+  <string name="yesterday" translatable="true"> till  yesterday </string>
+
+  <!-- Toast msg displayed when user enters invalid stock ticker -->
+
+  <string name="invalid_stock" translatable="true">Entered invalid stock</string>
+
+</resources>

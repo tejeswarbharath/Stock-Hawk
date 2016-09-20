@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tejeswar.android.stockhawk" >
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.READ_SYNC_SETTINGS"/>
+    <uses-permission android:name="android.permission.WRITE_SYNC_SETTINGS"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <permission android:name="com.example.gcm.permission.C2D_MESSAGE"
+                android:protectionLevel="signature" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="com.example.gcm.permission.C2D_MESSAGE" />
+    <uses-permission android:name="com.tejeswar.android.stockhawk.permission.C2D_MESSAGE" />
+    <application
+        android:allowBackup="true"
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:theme="@style/AppTheme"
+        android:supportsRtl="true">
+
+        <activity
+            android:name="com.tejeswar.android.stockhawk.ui.MyStocksActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.tejeswar.android.stockhawk.ui.HistoryActivity"
+                  android:label = "@string/history_activity_name">
+        </activity>
+        <service android:name="com.tejeswar.android.stockhawk.service.StockTaskService"
+                 android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE"
+                 android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.android.gms.gcm.ACTION_TASK_READY"/>
+            </intent-filter>
+        </service>
+        <service android:name="com.tejeswar.android.stockhawk.service.StockIntentService" />
+        <service android:name="com.tejeswar.android.stockhawk.service.HistoryTaskService"
+                 android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE"
+                 android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.android.gms.gcm.ACTION_TASK_READY"/>
+            </intent-filter>
+        </service>
+        <service android:name="com.tejeswar.android.stockhawk.service.HistoryIntentService" />
+        <service android:name="com.tejeswar.android.stockhawk.service.InfoTaskService"
+                 android:permission="com.google.android.gms.permission.BIND_NETWORK_TASK_SERVICE"
+                 android:exported="true">
+            <intent-filter>
+                <action android:name="com.google.android.gms.gcm.ACTION_TASK_READY"/>
+            </intent-filter>
+        </service>
+        <service android:name="com.tejeswar.android.stockhawk.service.InfoIntentService"/>
+        <provider
+            android:authorities="com.tejeswar.android.stockhawk.data.QuoteProvider"
+            android:name="com.tejeswar.android.stockhawk.data.generated.QuoteProvider"
+            android:exported="true"/>
+        <receiver
+            android:name="com.tejeswar.android.stockhawk.widget.StockWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
+                <action android:name="com.sam_chordas.android.stockhawk.app.DATA_SET_CHANGED"/>
+            </intent-filter>
+            <meta-data android:name="android.appwidget.provider"
+                       android:resource="@xml/stockhawk_appwidget_info"/>
+        </receiver>
+        <service
+            android:name="com.tejeswar.android.stockhawk.widget.WidgetService"
+            android:permission="android.permission.BIND_REMOTEVIEWS"/>
+    </application>
+</manifest>
