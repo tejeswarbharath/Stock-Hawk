@@ -64,7 +64,8 @@
             android:name="com.tejeswar.android.stockhawk.widget.StockWidgetProvider">
             <intent-filter>
                 <action android:name="android.appwidget.action.APPWIDGET_UPDATE"/>
-                <action android:name="com.sam_chordas.android.stockhawk.app.DATA_SET_CHANGED"/>
+                <action android:name="com.tejeswar.android.stockhawk.DATABASE_CHANGED"/>
+                <action android:name="android.intent.action.DATE_CHANGED" />
             </intent-filter>
             <meta-data android:name="android.appwidget.provider"
                        android:resource="@xml/stockhawk_appwidget_info"/>

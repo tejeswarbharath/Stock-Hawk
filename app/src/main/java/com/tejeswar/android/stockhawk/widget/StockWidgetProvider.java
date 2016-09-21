@@ -24,14 +24,20 @@ import com.tejeswar.android.stockhawk.ui.MyStocksActivity;
  * Widget enabled/disabled
  */
 
-public class StockWidgetProvider extends AppWidgetProvider {
+public class StockWidgetProvider extends AppWidgetProvider
+{
 
     Context mcontext;
+    public static final String UPDATE_STOCKS_ACTION = "android.appwidget.action.APPWIDGET_UPDATE";
+    public static final String UPDATE_STOCKS_ACTION_DATABASE = "com.tejeswar.android.stockhawk.DATABASE_CHANGED";
+    public static final String UPDATE_STOCKS_ACTION_DATE = "android.intent.action.DATE_CHANGED";
 
     @Override
     public void onReceive(Context context, Intent intent) {
         super.onReceive(context, intent);
-        if(StockTaskService.ACTION_DATA_UPDATED.equals(intent.getAction())){
+        String action = intent.getAction();
+        if(action.equals(UPDATE_STOCKS_ACTION) || action.equals(UPDATE_STOCKS_ACTION_DATE) || action.equals(UPDATE_STOCKS_ACTION_DATABASE))
+        {
             ComponentName name = new ComponentName(context, StockWidgetProvider.class);
             int [] ids = AppWidgetManager.getInstance(context).getAppWidgetIds(name);
             AppWidgetManager.getInstance(context).notifyAppWidgetViewDataChanged(ids, R.id.widget_list_view);

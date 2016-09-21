@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.widget.RemoteViews;
 import android.widget.RemoteViewsService;
-
 import java.util.ArrayList;
 import com.tejeswar.android.stockhawk.R;
 import com.tejeswar.android.stockhawk.data.QuoteColumns;
@@ -15,7 +14,9 @@ import com.tejeswar.android.stockhawk.data.QuoteProvider;
 /**
  * Created by tejeswar on 9/20/2016.
  */
-public class ListProvider implements RemoteViewsService.RemoteViewsFactory {
+
+public class ListProvider implements RemoteViewsService.RemoteViewsFactory
+{
 
     private Cursor mCursor;
     private Context context = null;
@@ -26,7 +27,8 @@ public class ListProvider implements RemoteViewsService.RemoteViewsFactory {
     public void onDestroy() {}
 
     @Override
-    public void onDataSetChanged() {
+    public void onDataSetChanged()
+    {
         mCursor = context.getContentResolver().query(QuoteProvider.Quotes.CONTENT_URI,
                 new String[]{QuoteColumns._ID, QuoteColumns.SYMBOL, QuoteColumns.BIDPRICE,
                         QuoteColumns.PERCENT_CHANGE, QuoteColumns.CHANGE, QuoteColumns.ISUP},
@@ -36,11 +38,11 @@ public class ListProvider implements RemoteViewsService.RemoteViewsFactory {
 
         list.clear();
 
-
         for (mCursor.moveToFirst(); ! mCursor.isAfterLast(); mCursor.moveToNext()) {
             list.add(new WidgetQuote(mCursor.getString(mCursor.getColumnIndex(QuoteColumns.SYMBOL)),
                     mCursor.getString(mCursor.getColumnIndex(QuoteColumns.BIDPRICE)),
                     mCursor.getString(mCursor.getColumnIndex(QuoteColumns.CHANGE))));
+
         }
     }
 
@@ -61,7 +63,6 @@ public class ListProvider implements RemoteViewsService.RemoteViewsFactory {
 
     @Override
     public void onCreate() {
-
     }
 
     public ListProvider(Context context, Intent intent) {

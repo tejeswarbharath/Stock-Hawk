@@ -7,7 +7,9 @@ import android.widget.RemoteViewsService;
 /**
  * Created by tejeswar on 9/20/2016.
  */
-public class WidgetService extends RemoteViewsService {
+
+public class WidgetService extends RemoteViewsService
+{
     @Override
     public RemoteViewsFactory onGetViewFactory(Intent intent) {
         int appWidgetId = intent.getIntExtra(
@@ -16,4 +18,5 @@ public class WidgetService extends RemoteViewsService {
 
         return (new ListProvider(this.getApplicationContext(), intent));
     }
+
 }

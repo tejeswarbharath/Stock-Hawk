@@ -21,6 +21,7 @@ import com.squareup.okhttp.Response;
 import com.tejeswar.android.stockhawk.data.QuoteColumns;
 import com.tejeswar.android.stockhawk.data.QuoteProvider;
 import com.tejeswar.android.stockhawk.rest.Utils;
+import com.tejeswar.android.stockhawk.widget.StockWidgetProvider;
 
 /**
  * Created by tejeswar on 9/30/15.
@@ -36,8 +37,7 @@ public class StockTaskService extends GcmTaskService{
   private Context mContext;
   private StringBuilder mStoredSymbols = new StringBuilder();
   private boolean isUpdate;
-  public static final String ACTION_DATA_UPDATED=
-          "com.tejeswar.android.stockhawk.app.DATA_SET_CHANGED";
+  //public static final String ACTION_DATA_UPDATED= "com.tejeswar.android.stockhawk.app.DATA_SET_CHANGED";
 
   public StockTaskService(){}
 
@@ -132,7 +132,7 @@ public class StockTaskService extends GcmTaskService{
           mContext.getContentResolver().applyBatch(QuoteProvider.AUTHORITY,
                   Utils.quoteJsonToContentVals(mContext, getResponse));
           //notify widget that there's a change in db
-          //mContext.sendBroadcast(new Intent(StockWidgetProvider.UPDATE_STOCKS_ACTION_DATABASE));
+          mContext.sendBroadcast(new Intent(StockWidgetProvider.UPDATE_STOCKS_ACTION_DATABASE));
         }catch (RemoteException | OperationApplicationException e){
           Log.e(LOG_TAG, "Error applying batch insert", e);
         }
@@ -140,8 +140,8 @@ public class StockTaskService extends GcmTaskService{
         e.printStackTrace();
       }
     }
-    Intent dataUpdated = new Intent(ACTION_DATA_UPDATED);
-    mContext.sendBroadcast(dataUpdated);
+    //Intent dataUpdated = new Intent(ACTION_DATA_UPDATED);
+    //mContext.sendBroadcast(dataUpdated);
     return result;
   }
 }

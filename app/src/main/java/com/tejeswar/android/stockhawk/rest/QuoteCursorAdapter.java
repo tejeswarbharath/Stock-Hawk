@@ -1,6 +1,7 @@
 package com.tejeswar.android.stockhawk.rest;
 
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -10,13 +11,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
 import com.tejeswar.android.stockhawk.R;
 import com.tejeswar.android.stockhawk.data.QuoteColumns;
 import com.tejeswar.android.stockhawk.data.QuoteProvider;
 import com.tejeswar.android.stockhawk.touch_helper.ItemTouchHelperAdapter;
 import com.tejeswar.android.stockhawk.touch_helper.ItemTouchHelperViewHolder;
-
+import com.tejeswar.android.stockhawk.widget.StockWidgetProvider;
 /**
  * Created by tejeswar on 10/6/15.
  * Credit to skyfishjy gist:
@@ -81,6 +81,7 @@ public class QuoteCursorAdapter extends CursorRecyclerViewAdapter<QuoteCursorAda
     String symbol = c.getString(c.getColumnIndex(QuoteColumns.SYMBOL));
     mContext.getContentResolver().delete(QuoteProvider.Quotes.withSymbol(symbol), null, null);
     notifyItemRemoved(position);
+    mContext.sendBroadcast(new Intent(StockWidgetProvider.UPDATE_STOCKS_ACTION_DATABASE));
   }
 
   @Override public int getItemCount() {

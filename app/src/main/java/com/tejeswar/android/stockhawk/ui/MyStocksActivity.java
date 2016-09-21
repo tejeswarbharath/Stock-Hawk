@@ -51,6 +51,7 @@ public class MyStocksActivity extends AppCompatActivity implements LoaderManager
     /**
      * Used to store the last screen title. For use in {@link #restoreActionBar()}.
      */
+
     private CharSequence mTitle;
     private Intent mServiceIntent;
     private ItemTouchHelper mItemTouchHelper;

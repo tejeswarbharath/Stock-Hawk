@@ -10,7 +10,8 @@ public class WidgetQuote {
     public String bid;
     public String change;
 
-    public WidgetQuote(String symbol, String bid, String change) {
+    public WidgetQuote(String symbol, String bid, String change)
+    {
         this.symbol = symbol;
         this.bid = bid;
         this.change = change;
